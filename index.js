@@ -179,3 +179,30 @@ firstGameContainer.appendChild(firstGame);
 const secondGame = document.createElement("p");
 secondGame.innerHTML = second.name;
 secondGameContainer.appendChild(secondGame);
+
+// scroll to games details section
+const btnScrollToGamesDetails = document.getElementById("btn-scroll-to-games");
+const gamesDetails = document.getElementById("games-details");
+const welcomeSection = document.getElementById("welcome-section");
+btnScrollToGamesDetails.onclick = (event) => {
+  event.preventDefault();
+  gamesDetails.scrollIntoView({
+    behavior: "smooth",
+  });
+};
+//scroll to top btn display
+const btnScrollToTop = document.getElementById("scroll-to-top-btn");
+const topNav = document.getElementById("top-nav");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    btnScrollToTop.classList.toggle("show", !entry.isIntersecting);
+  });
+});
+observer.observe(welcomeSection);
+btnScrollToTop.onclick = (event) => {
+  event.preventDefault();
+  topNav.scrollIntoView({
+    behavior: "smooth",
+  });
+};
+// search
